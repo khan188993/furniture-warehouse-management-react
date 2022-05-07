@@ -1,14 +1,14 @@
 import React,{useState,useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 import SingleProduct from '../../components/SingleProduct/SingleProduct'
+import useAppContext from '../../ContextApi/useAppContext'
 import productsData from '../../fake'
 import useFetchProduct from '../../hooks/useFetchProduct'
 
 const ManageProducts = () => {
 
     
-    const {products,setProducts} = useFetchProduct("http://localhost:4000/furniture");
-    console.log(products);
+    const {products,setProducts} = useAppContext().data;
     
 
     const navigate = useNavigate()

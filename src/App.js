@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import { Navigate, NavLink, Route,Routes } from 'react-router-dom';
@@ -16,12 +16,31 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './Firebase/Firebase.init';
 import UpdateProduct from './pages/UpdateProduct/UpdateProduct';
 import BlogPage from './pages/BlogPage/BlogPage';
-import AppStates from './ContextApi/AppState';
+import MyContext from './ContextApi/AppContext';
+import useFetchProduct from './hooks/useFetchProduct';
 const App = () => {
-
+  const [myProducts,setMyProducts] = useState([]);
   const [user] = useAuthState(auth)
+  const {products,setProducts} = useFetchProduct('http://localhost:4000/furniture')
+
+   //FETCHING DATA
+    useEffect(() => {
+        fetch(`http://localhost:4000/furniture?supplier_name=${user?.displayName}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setMyProducts(data);
+                console.log(data);
+            });
+    }, [user?.displayName]);
+
+
+  
+
+
+
+  
   return (
-    <AppStates value={{user}} >
+    <MyContext.Provider value={{products,setProducts,user,myProducts,setMyProducts}} >
       <h1 className='text-center'>React Learning Practice code Running.</h1>
       {/* navigation link making  */}
       <Header/>
@@ -47,7 +66,7 @@ const App = () => {
         <Route path='/*' element={<NotFound/>}></Route>
 
       </Routes>
-    </AppStates>
+    </MyContext.Provider>
   )
 }
 

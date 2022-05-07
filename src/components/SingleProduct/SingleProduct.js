@@ -1,7 +1,9 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import useAppContext from "../../ContextApi/useAppContext";
 
-const SingleProduct = ({product,setProducts,products}) => {
+const SingleProduct = ({product}) => {
+    const {products,setProducts,setMyProducts,myProducts} = useAppContext().data;
     const path = useLocation().pathname;
     const {_id,name,price,desc,imgUrl,supplier_name,quantity,sold} = product;
 
@@ -16,9 +18,11 @@ const SingleProduct = ({product,setProducts,products}) => {
             .then(res=>res.json())
             .then(data=>{
                 const newProduct = products.filter((product)=>product._id!=id);
+                const newMyProduct = myProducts.filter((product)=>product._id!=id);
                 console.log(newProduct);
                 //product deleted and set 
                 setProducts(newProduct)
+                setMyProducts(newMyProduct);
             })
         //this will delete the product by fetch delete method ,
     }

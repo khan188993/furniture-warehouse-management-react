@@ -12,7 +12,7 @@ const useFetchProduct = (url) => {
             });
     }, []);
 
-    return { products, setProducts };
+    return {products, setProducts};
 };
 
 export default useFetchProduct;

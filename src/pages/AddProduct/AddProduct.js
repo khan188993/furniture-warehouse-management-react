@@ -1,9 +1,13 @@
 import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import { Navigate, useNavigate } from 'react-router-dom'
+import useAppContext from '../../ContextApi/useAppContext'
 import auth from '../../Firebase/Firebase.init'
 
 const AddProduct = () => {
-    const [user] = useAuthState(auth)
+    const navigate = useNavigate()
+
+    const {user,products,setProducts} = useAppContext().data;
     // const {_id,name,price,desc,imgUrl,supplier_name,quantity,sold} = product;
     /* 
     sold value initial 0, quantity input submit will get 
@@ -24,17 +28,19 @@ const AddProduct = () => {
 
        */
         if(productName && productDesc && productImgUrl && productPrice && Number(productQuantity) && productSupplierName){
+            const newProduct = {
+                name: productName,
+                desc: productDesc,
+                imgUrl: productImgUrl,
+                supplier_name: productSupplierName,
+                quantity: productQuantity,
+                price: productPrice,
+                sold: productSold,
+            }
+
             fetch("http://localhost:4000/furniture", {
                 method: "POST",
-                body: JSON.stringify({
-                    name: productName,
-                    desc: productDesc,
-                    imgUrl: productImgUrl,
-                    supplier_name: productSupplierName,
-                    quantity: productQuantity,
-                    price: productPrice,
-                    sold: productSold,
-                }),
+                body: JSON.stringify(newProduct),
                 headers: {
                     "Content-type": "application/json; charset=UTF-8",
                 },
@@ -42,6 +48,8 @@ const AddProduct = () => {
             .then(res=>res.json())
             .then(data=>{
                 console.log(data);
+                setProducts([...products,newProduct])
+                navigate('/manage-products')
             })
         }
 
