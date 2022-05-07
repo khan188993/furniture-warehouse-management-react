@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SingleProduct = ({product,setProducts,products}) => {
     const path = useLocation().pathname;
@@ -32,6 +32,7 @@ const SingleProduct = ({product,setProducts,products}) => {
                     <h4>Supplier Name : {supplier_name}</h4>
                     <p>{desc}</p>
                     <span>{price}$ price</span>
+                    <span>Sold: {sold} </span>
                     <span>Quantity: {quantity}</span>
                     <br></br>
                     {

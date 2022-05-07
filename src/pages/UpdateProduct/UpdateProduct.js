@@ -15,7 +15,24 @@ const UpdateProduct = () => {
     const handleRestockItems = (e)=>{
         e.preventDefault();
         const quantity = e.target.quantity.value;
-        console.log(quantity);
+        if(Number(quantity) > 0){
+            // http://localhost:4000/furniture/update/2
+            fetch("https://jsonplaceholder.typicode.com/posts/1", {
+                method: "PUT",
+                body: JSON.stringify({
+                    // name: productName,
+                    // desc: productDesc,
+                    // imgUrl: productImgUrl,
+                    // supplier_name: productSupplierName,
+                    // quantity: productQuantity,
+                    // price: productPrice,
+                    // sold: productSold,
+                }),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                },
+            });
+        }
         /* if quantity number greater than 0 or not undefined then update backend again, */
 
     }

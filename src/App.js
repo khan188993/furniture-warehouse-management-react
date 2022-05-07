@@ -16,11 +16,12 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './Firebase/Firebase.init';
 import UpdateProduct from './pages/UpdateProduct/UpdateProduct';
 import BlogPage from './pages/BlogPage/BlogPage';
+import AppStates from './ContextApi/AppState';
 const App = () => {
 
   const [user] = useAuthState(auth)
   return (
-    <>
+    <AppStates value={{user}} >
       <h1 className='text-center'>React Learning Practice code Running.</h1>
       {/* navigation link making  */}
       <Header/>
@@ -46,7 +47,7 @@ const App = () => {
         <Route path='/*' element={<NotFound/>}></Route>
 
       </Routes>
-    </>
+    </AppStates>
   )
 }
 
