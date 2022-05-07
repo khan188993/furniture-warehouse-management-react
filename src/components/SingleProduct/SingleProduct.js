@@ -35,7 +35,7 @@ const SingleProduct = ({product,setProducts,products}) => {
                     <span>Quantity: {quantity}</span>
                     <br></br>
                     {
-                        path.includes('manage-products') ? (
+                        path.includes('manage-products') || path.includes('my-products') ? (
                             <button onClick={()=>handleDeleteProduct(_id)} className="btn btn-danger">
                                 Delete Product
                             </button>
