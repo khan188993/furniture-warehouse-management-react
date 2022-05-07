@@ -1,9 +1,9 @@
 import React from 'react'
 
-const SectionTitle = () => {
+const SectionTitle = ({secTitle,secDesc}) => {
     return (
-        <div>
-            <h1>Section Title Component</h1>
+        <div className='section-title text-center'>
+            <h1>{secTitle}</h1>
         </div>
     )
 }

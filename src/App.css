@@ -1,0 +1,7 @@
+/* header */
+header {background: antiquewhite;}
+
+/* Navbar */
+nav ul {display: flex;list-style: none;justify-content: end;}
+
+nav ul li {margin-left: 55px;}

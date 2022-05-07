@@ -1,17 +1,31 @@
 import React from 'react'
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../Firebase/Firebase.init';
 
 
 const LoginPage = () => {
-    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-    const handleGoogleAuth = ()=>{
+    const navigate = useNavigate();
+    const [user] = useAuthState(auth)
+    const location = useLocation();
+    const redirectPath = location?.state?.from?.pathname || "/";
+    // console.log(redirectPath);
 
+    const [signInWithGoogle] = useSignInWithGoogle(auth);
+    const handleGoogleAuth = ()=>{
+        signInWithGoogle()
     }
+
+    if(user){
+        navigate(redirectPath);
+    }
+
+   
+
     return (
         <div>
             <h1>LoginPage</h1>
-            <button onClick={()=>signInWithGoogle()} className='btn btn-danger'>Login witn google</button>
+            <button onClick={()=>handleGoogleAuth()} className='btn btn-danger'>Login witn google</button>
         </div>
     )
 }
