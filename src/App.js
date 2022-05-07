@@ -15,6 +15,7 @@ import Header from './components/Header/Header';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './Firebase/Firebase.init';
 import UpdateProduct from './pages/UpdateProduct/UpdateProduct';
+import BlogPage from './pages/BlogPage/BlogPage';
 const App = () => {
 
   const [user] = useAuthState(auth)
@@ -29,16 +30,19 @@ const App = () => {
         <Route path='/' element={<Home/>}></Route>
         <Route path='/home' element={<Home/>}></Route>
         <Route path='/about' element={<AboutPage/>}></Route>
+        <Route path='/blogs' element={<BlogPage/>}></Route>
         <Route path='/inventory/:id' element={<PrivateRoute>
           <UpdateProduct/>
         </PrivateRoute>}></Route>
         <Route path='/manage-products' element={<PrivateRoute>
           <ManageProducts/>
         </PrivateRoute>}></Route>
-        <Route path='/my-products' element={<MyProducts/>}></Route>
+        <Route path='/my-products' element={<PrivateRoute>
+          <MyProducts/>
+        </PrivateRoute>}></Route>
         <Route path='/add-new-product' element={<AddProduct/>}></Route>
         <Route path='/login' element={<LoginPage/>}></Route>
-        <Route path='/sign-up' element={user ? <Navigate to='/'/> : <SignUpPage/>}></Route>
+        <Route path='/sign-up' element={<SignUpPage/>}></Route>
         <Route path='/*' element={<NotFound/>}></Route>
 
       </Routes>

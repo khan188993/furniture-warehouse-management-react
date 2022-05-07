@@ -45,6 +45,7 @@ const LoginPage = () => {
                     Email : <input type="email" name='email' placeholder='email' /><br/>
                     Password: <input type="password" name='password' placeholder='password' /><br/>
                     <input type="submit" value='submit' />
+                    <button onClick={()=>navigate('/sign-up')}>SignUp</button>
                 </form>
             </div>
             <hr />
