@@ -1,9 +1,21 @@
 import React from 'react'
 
 const AddProduct = () => {
+    // const {_id,name,price,desc,imgUrl,supplier_name,quantity,sold} = product;
+    /* 
+    sold value initial 0, quantity input submit will get 
+    
+    */
     return (
-        <div>
-            <h1>Add Product</h1>
+        <div className='w-50 mx-auto'>
+            <h1 className='text-center my-4'>Add Product</h1>
+            <div className="form">
+                <form action="" onSubmit={handleAddProduct}>
+                    product name: <input type="text" name='product_name' placeholder='product_name' /><br></br>
+                    price : <input type="text" placeholder='price' name='price' /><br></br>
+                    desc : <input type="text" placeholder='desc' name='desc' />
+                </form>
+            </div>
         </div>
     )
 }

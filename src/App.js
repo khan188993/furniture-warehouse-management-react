@@ -14,6 +14,7 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
 import Header from './components/Header/Header';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './Firebase/Firebase.init';
+import UpdateProduct from './pages/UpdateProduct/UpdateProduct';
 const App = () => {
 
   const [user] = useAuthState(auth)
@@ -29,7 +30,7 @@ const App = () => {
         <Route path='/home' element={<Home/>}></Route>
         <Route path='/about' element={<AboutPage/>}></Route>
         <Route path='/inventory/:id' element={<PrivateRoute>
-          <h1>Manage Single Product</h1>
+          <UpdateProduct/>
         </PrivateRoute>}></Route>
         <Route path='/manage-products' element={<PrivateRoute>
           <ManageProducts/>

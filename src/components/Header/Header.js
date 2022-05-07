@@ -48,6 +48,10 @@ const Header = () => {
                     <NavLink to="/add-new-product">Add New Product</NavLink>
                   </li>
                   <li>
+                      <span>img</span>
+                      <span>{user.displayName}</span>
+                  </li>
+                  <li>
                       <button className='btn btn-danger' onClick={()=>handleLogOut()}>LogOut</button>
                   </li>
                           </>

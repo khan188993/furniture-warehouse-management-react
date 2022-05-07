@@ -1,4 +1,5 @@
 import React from 'react'
+import productsData from '../../fake'
 import Banner from '../../components/Banner/Banner'
 import SingleProduct from '../../components/SingleProduct/SingleProduct'
 import Footer from '../../components/Footer/Footer'
@@ -16,9 +17,10 @@ const Home = () => {
                 <div className="container">
                 <SectionTitle secTitle="Inventories" secDesc="Inventories Descriptions"/>
                     <div className="row">
-                        <SingleProduct/>
-                        <SingleProduct/>
-                        <SingleProduct/>
+                        {
+                            productsData.map((product)=><SingleProduct key={product._id} product={product}/>)
+                        }
+                        <div className='text-center'><button className='btn btn-success' onClick={()=>navigate('/manage-products')}>Manage All Products</button></div>
                     </div>
                 </div>
             </section>
