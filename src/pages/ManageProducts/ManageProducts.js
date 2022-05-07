@@ -1,9 +1,16 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 import SingleProduct from '../../components/SingleProduct/SingleProduct'
 import productsData from '../../fake'
+import useFetchProduct from '../../hooks/useFetchProduct'
 
 const ManageProducts = () => {
+
+    
+    const {products,setProducts} = useFetchProduct("http://localhost:4000/furniture");
+    console.log(products);
+    
+
     const navigate = useNavigate()
     return (
         <section className='manage-products'>
@@ -11,7 +18,7 @@ const ManageProducts = () => {
             <div className="container">
                 <div className="row">
                     {
-                        productsData.map((product=><SingleProduct key={product._id} product={product}/>))
+                        products.map((product=><SingleProduct products={products} setProducts={setProducts} key={product._id} product={product}/>))
                     }
                     <div className="text-center">
                         <button onClick={()=>navigate('/add-new-product')}>Add new Items</button>

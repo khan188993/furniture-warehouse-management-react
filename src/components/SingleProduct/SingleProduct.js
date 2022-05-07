@@ -1,7 +1,7 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-const SingleProduct = ({product}) => {
+const SingleProduct = ({product,setProducts,products}) => {
     const path = useLocation().pathname;
     const {_id,name,price,desc,imgUrl,supplier_name,quantity,sold} = product;
 
@@ -9,6 +9,17 @@ const SingleProduct = ({product}) => {
 
     const handleDeleteProduct = (id)=>{
         console.log(id);
+        // http://localhost:4000/furniture/delete/1
+        fetch(`http://localhost:4000/furniture/delete/${id}`, {
+            method: 'DELETE',
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                const newProduct = products.filter((product)=>product._id!=id);
+                console.log(newProduct);
+                //product deleted and set 
+                setProducts(newProduct)
+            })
         //this will delete the product by fetch delete method ,
     }
 
