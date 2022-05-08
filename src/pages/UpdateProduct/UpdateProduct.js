@@ -1,20 +1,61 @@
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import useAppContext from '../../ContextApi/useAppContext';
+import useFetchProduct from '../../hooks/useFetchProduct';
 
 const UpdateProduct = () => {
     const navigate = useNavigate()
-    const {quantity,setQuantity,sold,setSold,products} = useAppContext().data;
+    const {products,setProducts} = useFetchProduct('http://localhost:4000/furniture');
+    const {quantity,setQuantity,sold,setSold} = useAppContext().data;
     //this will find by database, 
     const {id} = useParams();
-    const updateProduct = products.find((product)=>product._id ==id);
+    const updateProduct = products?.find((product)=>product._id ==id);
+    // setQuantity(updateProduct?.quantity);
 
-    const Delivered = (id)=>{
+    const handleRestockItems = (e)=>{
+        e.preventDefault();
+        const quantityNumber = Number(e.target.quantity.value);
+        // console.log('updateProduct',updateProduct.quantity,'myQuantity',quantityNumber);
+
+        //Update quantity data ;
+        const updatedQuantityData = {
+            name:updateProduct?.name,
+            desc:updateProduct?.desc,
+            imgUrl:updateProduct?.imgUrl,
+            price:updateProduct?.price,
+            supplier_name:updateProduct?.supplier_name,
+            quantity:(quantity || updateProduct?.quantity) + quantityNumber,
+            sold:updateProduct?.sold,
+        }
+        console.log(updatedQuantityData);
+        fetch(`http://localhost:4000/furniture/update/${id}`, {
+                method: 'PUT',
+                body: JSON.stringify(updatedQuantityData),
+                headers: {
+                  'Content-type': 'application/json; charset=UTF-8',
+                },
+              })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log('all data',data,'new',);
+                    setQuantity(updatedQuantityData.quantity);
+                    // setQuantity(Number(quantity) + Number(quantityNumber))
+                    e.target.reset();
+                });
+
+    }
+
+
+    const delivered = (id)=>{
+
+    }
+    
+/*     const Delivered = (id)=>{
 
             //Quantity updating 
             // setQuantity((Number(updateProduct.quantity)-1).toString());
             // setSold((Number(updateProduct.sold)+1));
-
+            setQuantity(updateProduct.quantity);
             const updatedData = {
                 name:updateProduct.name,
                 desc:updateProduct.desc,
@@ -35,6 +76,7 @@ const UpdateProduct = () => {
                 .then((response) => response.json())
                 .then((json) => {
                     console.log(json);
+                    // setQuantity(updatedData.quantity);
                 });
 
         //update krbo delivered e click krle quantity ekta decre and sold ekta incre,
@@ -74,15 +116,15 @@ const UpdateProduct = () => {
         }
         /* if quantity number greater than 0 or not undefined then update backend again, */
 
-    }
+    // } */
 
     return (
         <div className='text-center'>
             <h1>Update Product id: {id}</h1>
-            <h2>Name : {updateProduct.name}</h2>
-            <span>Quantity : {quantity || updateProduct.quantity}</span><br/>
-            <span>sold : {sold || updateProduct.sold}</span><br/>
-            <button onClick={()=>Delivered(id)}>Delivered</button>
+            <h2>Name : {updateProduct?.name}</h2>
+            <span>Quantity : {quantity || updateProduct?.quantity}</span><br/>
+            <span>sold : {sold || updateProduct?.sold}</span><br/>
+            <button onClick={()=>delivered(id)}>Delivered</button>
             <button className='btn' onClick={()=>navigate('/manage-products')}>Manage Products</button>
             <div className="form w-50 ml-auto">
                 <form action="" onSubmit={handleRestockItems}>
