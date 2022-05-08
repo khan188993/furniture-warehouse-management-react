@@ -12,9 +12,8 @@ const UpdateProduct = () => {
     const Delivered = (id)=>{
 
             //Quantity updating 
-            setQuantity((Number(updateProduct.quantity)-1).toString());
-            setSold((Number(updateProduct.sold)+1));
-            console.log(sold);
+            // setQuantity((Number(updateProduct.quantity)-1).toString());
+            // setSold((Number(updateProduct.sold)+1));
 
             const updatedData = {
                 name:updateProduct.name,
@@ -34,7 +33,9 @@ const UpdateProduct = () => {
                 },
               })
                 .then((response) => response.json())
-                .then((json) => console.log(json));
+                .then((json) => {
+                    console.log(json);
+                });
 
         //update krbo delivered e click krle quantity ekta decre and sold ekta incre,
     }
@@ -44,21 +45,25 @@ const UpdateProduct = () => {
         const quantity = e.target.quantity.value;
         if(Number(quantity) > 0){
             // http://localhost:4000/furniture/update/2
-            fetch("https://jsonplaceholder.typicode.com/posts/1", {
-                method: "PUT",
-                body: JSON.stringify({
-                    // name: productName,
-                    // desc: productDesc,
-                    // imgUrl: productImgUrl,
-                    // supplier_name: productSupplierName,
-                    // quantity: productQuantity,
-                    // price: productPrice,
-                    // sold: productSold,
-                }),
+            const updatedData = {
+                name:updateProduct.name,
+                desc:updateProduct.desc,
+                imgUrl:updateProduct.imgUrl,
+                price:updateProduct.price,
+                supplier_name:updateProduct.supplier_name,
+                quantity:updateProduct.quantity + Number(quantity),
+                sold:updateProduct.sold,
+            }
+
+            fetch(`http://localhost:4000/furniture/update/${id}`, {
+                method: 'PUT',
+                body: JSON.stringify(updatedData),
                 headers: {
-                    "Content-type": "application/json; charset=UTF-8",
+                  'Content-type': 'application/json; charset=UTF-8',
                 },
-            });
+              })
+                .then((response) => response.json())
+                .then((json) => console.log(json));
         }
         /* if quantity number greater than 0 or not undefined then update backend again, */
 
