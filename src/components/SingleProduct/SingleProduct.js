@@ -13,7 +13,9 @@ const SingleProduct = ({product}) => {
     const handleDeleteProduct = (id)=>{
         console.log(id);
         // http://localhost:4000/furniture/delete/1
-        fetch(`http://localhost:4000/furniture/delete/${id}`, {
+        let isTrue = window.confirm('Do you want to delete');
+        if(isTrue){
+            fetch(`http://localhost:4000/furniture/delete/${id}`, {
             method: 'DELETE',
             })
             .then(res=>res.json())
@@ -25,6 +27,7 @@ const SingleProduct = ({product}) => {
                 setProducts(newProduct)
                 setMyProducts(newMyProduct);
             })
+        }
         //this will delete the product by fetch delete method ,
     }
 
