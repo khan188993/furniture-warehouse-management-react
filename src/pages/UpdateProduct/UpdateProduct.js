@@ -5,19 +5,19 @@ import useFetchProduct from '../../hooks/useFetchProduct';
 
 const UpdateProduct = () => {
     const navigate = useNavigate()
+    const {id} = useParams();
     const {products,setProducts} = useFetchProduct('http://localhost:4000/furniture');
     const {quantity,setQuantity,sold,setSold} = useAppContext().data;
-    //this will find by database, 
-    const {id} = useParams();
+
     const updateProduct = products?.find((product)=>product._id ==id);
-    // setQuantity(updateProduct?.quantity);
+
 
     const handleRestockItems = (e)=>{
         e.preventDefault();
         const quantityNumber = Number(e.target.quantity.value);
-        // console.log('updateProduct',updateProduct.quantity,'myQuantity',quantityNumber);
 
-        //Update quantity data ;
+        if(quantityNumber > 0){
+            //Update quantity data ;
         const updatedQuantityData = {
             name:updateProduct?.name,
             desc:updateProduct?.desc,
@@ -37,17 +37,38 @@ const UpdateProduct = () => {
               })
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log('all data',data,'new',);
+
                     setQuantity(updatedQuantityData.quantity);
-                    // setQuantity(Number(quantity) + Number(quantityNumber))
                     e.target.reset();
                 });
+        }
 
     }
 
 
     const delivered = (id)=>{
+        const updatedQuantityData = {
+            name:updateProduct?.name,
+            desc:updateProduct?.desc,
+            imgUrl:updateProduct?.imgUrl,
+            price:updateProduct?.price,
+            supplier_name:updateProduct?.supplier_name,
+            quantity:(quantity || updateProduct?.quantity) - 1,
+            sold:updateProduct?.sold,
+        }
 
+        fetch(`http://localhost:4000/furniture/update/${id}`, {
+                method: 'PUT',
+                body: JSON.stringify(updatedQuantityData),
+                headers: {
+                  'Content-type': 'application/json; charset=UTF-8',
+                },
+              })
+                .then((response) => response.json())
+                .then((data) => {
+                    setQuantity(updatedQuantityData.quantity);
+                });
+        
     }
     
 /*     const Delivered = (id)=>{
