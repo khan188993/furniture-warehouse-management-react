@@ -8,7 +8,7 @@ const UpdateProduct = () => {
     const {id} = useParams();
     const {products,setProducts} = useFetchProduct('http://localhost:4000/furniture');
     const {quantity,setQuantity,sold,setSold,newAdd,setNewAdd} = useAppContext().data;
-
+    console.log(newAdd);
     const updateProduct = products?.find((product)=>product._id ==id);
 
 

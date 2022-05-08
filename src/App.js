@@ -35,7 +35,7 @@ const App = () => {
                 setMyProducts(data);
                 console.log(data);
             });
-    }, [user?.displayName]);
+    }, [user?.displayName,newAdd]);
 
 
   
