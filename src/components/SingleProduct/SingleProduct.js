@@ -3,7 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useAppContext from "../../ContextApi/useAppContext";
 
 const SingleProduct = ({product}) => {
-    const {products,setProducts,setMyProducts,myProducts} = useAppContext().data;
+    const {products,setProducts,setMyProducts,myProducts,user} = useAppContext().data;
+    // console.log(user.displayName);
     const path = useLocation().pathname;
     const {_id,name,price,desc,imgUrl,supplier_name,quantity,sold} = product;
 
@@ -39,23 +40,24 @@ const SingleProduct = ({product}) => {
                     <span>Sold: {sold} </span>
                     <span>Quantity: {quantity}</span>
                     <br></br>
-                    {
-                        path.includes('manage-products') || path.includes('my-products') ? (
-                            <button onClick={()=>handleDeleteProduct(_id)} className="btn btn-danger">
-                                Delete Product
-                            </button>
-                        ):
-                        (
-                            <button
-                        className="btn btn-danger"
-                        onClick={() => navigate(`/inventory/${_id}`)}
-                    >
-                        Update Product
-                    </button>
-                        )
-                    }
-                    
-                    
+                    {user?.displayName != supplier_name ? (
+                        <></>
+                    ) : path.includes("manage-products") ||
+                      path.includes("my-products") ? (
+                        <button
+                            onClick={() => handleDeleteProduct(_id)}
+                            className="btn btn-danger"
+                        >
+                            Delete Product
+                        </button>
+                    ) : (
+                        <button
+                            className="btn btn-danger"
+                            onClick={() => navigate(`/inventory/${_id}`)}
+                        >
+                            Update Product
+                        </button>
+                    )}
                 </div>
             </div>
         </div>

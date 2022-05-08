@@ -11,7 +11,7 @@ const useFetchProduct = (url) => {
             .then((data) => {
                 setProducts(data);
             });
-    }, [newAdd]);
+    }, [products,newAdd]);
 
     return {products, setProducts,newAdd,setNewAdd};
 };

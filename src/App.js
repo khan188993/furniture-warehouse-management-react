@@ -34,7 +34,7 @@ const App = () => {
                 setMyProducts(data);
                 console.log(data);
             });
-    }, [user?.displayName]);
+    }, [user?.displayName,myProducts]);
 
 
   
@@ -43,7 +43,7 @@ const App = () => {
 
   
   return (
-    <MyContext.Provider value={{products,setProducts,user,myProducts,setMyProducts,quantity,setQuantity,sold,setSold,newAdd,setNewAdd}} >
+    <MyContext.Provider value={{user,products,setProducts,user,myProducts,setMyProducts,quantity,setQuantity,sold,setSold,newAdd,setNewAdd}} >
       <h1 className='text-center'>React Learning Practice code Running.</h1>
       {/* navigation link making  */}
       <Header/>

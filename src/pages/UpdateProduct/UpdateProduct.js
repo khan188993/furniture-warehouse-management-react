@@ -24,7 +24,7 @@ const UpdateProduct = () => {
             imgUrl:updateProduct?.imgUrl,
             price:updateProduct?.price,
             supplier_name:updateProduct?.supplier_name,
-            quantity:(quantity || updateProduct?.quantity) + quantityNumber,
+            quantity:Number((quantity || updateProduct?.quantity)) + quantityNumber,
             sold:updateProduct?.sold,
         }
         console.log(updatedQuantityData);
@@ -38,7 +38,7 @@ const UpdateProduct = () => {
                 .then((response) => response.json())
                 .then((data) => {
 
-                    setQuantity(updatedQuantityData.quantity);
+                    setQuantity(Number(updatedQuantityData.quantity));
                     e.target.reset();
                 });
         }

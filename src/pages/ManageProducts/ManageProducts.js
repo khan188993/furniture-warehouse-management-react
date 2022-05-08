@@ -7,8 +7,7 @@ import useFetchProduct from '../../hooks/useFetchProduct'
 
 const ManageProducts = () => {
 
-    
-    const {products,setProducts} = useAppContext().data;
+    const {user,products,setProducts} = useAppContext().data;
     
 
     const navigate = useNavigate()
