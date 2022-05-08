@@ -42,8 +42,11 @@ const UpdateProduct = () => {
 
     const handleRestockItems = (e)=>{
         e.preventDefault();
-        const quantity = e.target.quantity.value;
-        if(Number(quantity) > 0){
+        const quantityNumber = e.target.quantity.value;
+        //21 set after hit button 
+        console.log(updateProduct.quantity,'qu',quantity);
+        // console.log(quantity,"quantity");
+        if(Number(quantityNumber) > 0){
             // http://localhost:4000/furniture/update/2
             const updatedData = {
                 name:updateProduct.name,
@@ -51,7 +54,7 @@ const UpdateProduct = () => {
                 imgUrl:updateProduct.imgUrl,
                 price:updateProduct.price,
                 supplier_name:updateProduct.supplier_name,
-                quantity:updateProduct.quantity + Number(quantity),
+                quantity:updateProduct.quantity + Number(quantityNumber),
                 sold:updateProduct.sold,
             }
 
@@ -63,7 +66,11 @@ const UpdateProduct = () => {
                 },
               })
                 .then((response) => response.json())
-                .then((json) => console.log(json));
+                .then((data) => {
+                    console.log('all data',data);
+                    // setQuantity(Number(quantity) + Number(quantityNumber))
+                    e.target.reset();
+                });
         }
         /* if quantity number greater than 0 or not undefined then update backend again, */
 
@@ -73,8 +80,8 @@ const UpdateProduct = () => {
         <div className='text-center'>
             <h1>Update Product id: {id}</h1>
             <h2>Name : {updateProduct.name}</h2>
-            <span>Quantity : {updateProduct.quantity}</span><br/>
-            <span>sold : {updateProduct.sold}</span><br/>
+            <span>Quantity : {quantity || updateProduct.quantity}</span><br/>
+            <span>sold : {sold || updateProduct.sold}</span><br/>
             <button onClick={()=>Delivered(id)}>Delivered</button>
             <button className='btn' onClick={()=>navigate('/manage-products')}>Manage Products</button>
             <div className="form w-50 ml-auto">
