@@ -34,8 +34,9 @@ const Home = () => {
                 </div>
             </section>
             <WhyWe/>
+            <h1 className='text-center'> <a href='https://stackoverflow.com/questions/72163434/how-can-i-vertically-center-a-div-element'>StackOverFlow question Link I have forget to add when submit this </a></h1>
             <Footer/>
-            <h1>Extra 2 section</h1>
+           
         </>
     )
 }
