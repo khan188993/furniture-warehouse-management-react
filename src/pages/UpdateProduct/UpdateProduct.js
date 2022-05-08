@@ -7,7 +7,7 @@ const UpdateProduct = () => {
     const navigate = useNavigate()
     const {id} = useParams();
     const {products,setProducts} = useFetchProduct('http://localhost:4000/furniture');
-    const {quantity,setQuantity,sold,setSold} = useAppContext().data;
+    const {quantity,setQuantity,sold,setSold,newAdd,setNewAdd} = useAppContext().data;
 
     const updateProduct = products?.find((product)=>product._id ==id);
 
@@ -39,6 +39,7 @@ const UpdateProduct = () => {
                 .then((data) => {
 
                     setQuantity(Number(updatedQuantityData.quantity));
+                    setNewAdd(newAdd+1);
                     e.target.reset();
                 });
         }
@@ -69,6 +70,7 @@ const UpdateProduct = () => {
                     .then((data) => {
                         setQuantity(updatedData.quantity);
                         setSold(updatedData.sold)
+                        setNewAdd(newAdd+1);
                     });
         }else{
             console.log('Stoke Out Can not delivered');

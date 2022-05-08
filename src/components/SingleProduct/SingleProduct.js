@@ -43,7 +43,26 @@ const SingleProduct = ({product}) => {
                     <span>Sold: {sold} </span>
                     <span>Quantity: {quantity}</span>
                     <br></br>
-                    {user?.displayName != supplier_name ? (
+                    {
+                        (path.includes("manage-products") ||
+                        path.includes("my-products") )?(
+                            <button
+                            onClick={() => handleDeleteProduct(_id)}
+                            className="btn btn-danger"
+                        >
+                            Delete Product
+                        </button>
+                        ):(
+                            <button
+                            className="btn btn-danger"
+                            onClick={() => navigate(`/inventory/${_id}`)}
+                        >
+                            Update Product
+                        </button>
+                        )
+                    }
+                    {/* register user can see this button */}
+                    {/* {user?.displayName != supplier_name ? (
                         <></>
                     ) : path.includes("manage-products") ||
                       path.includes("my-products") ? (
@@ -60,7 +79,7 @@ const SingleProduct = ({product}) => {
                         >
                             Update Product
                         </button>
-                    )}
+                    )} */}
                 </div>
             </div>
         </div>
