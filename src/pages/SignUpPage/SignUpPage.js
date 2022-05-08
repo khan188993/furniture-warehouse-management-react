@@ -112,29 +112,103 @@ const SignUpPage = () => {
 
     
     return (
-        <div>
-            <h1>Sing Up With Email password</h1>
-            <div className="email-pass-login w-50 mx-auto">
-                <h1>Email Pass Login : </h1>
-                <form action="" onSubmit={handleSignUp}>
-                Email new: <input required onBlur={handleEmail} name="email" id="email" placeholder="Email" type="email"/>
-                                                {email.error && (<span className="error">{email.error}</span>)}<br/>
-                password new: <input required onBlur={handlePassword} name="password" id="password" placeholder="password" type="password"/>
-                                                {password.error && (<span className="error">{password.error}</span>)}<br/>
-                confirm password new: <input required onBlur={handleConfirmPassword} name="passwordConfirmation" id="passwordConfirmation" placeholder="passwordConfirmation" type="password"/>
-                                                {passwordConfirmation.error && (<span className="error">{passwordConfirmation.error}</span>)}<br/>
-                    <hr />
-                    {/* Email : <input type="email" name='email' placeholder='email' /><br/>
-                    Password: <input type="password" name='password' placeholder='password' /><br/>
-                    Confirm Password: <input type="password" name='confirm-password' placeholder='confirm password' /><br/> */}
-                    <input type="submit" value='submit' />
-                    <button onClick={()=>navigate('/login')}>Login</button>
-                </form>
-            </div>
-            <hr />
-            <button onClick={()=>signInWithGoogle()} className='btn btn-danger'>SignUp witn google</button>
-        </div>
-    )
+        <>
+            <section className="form">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-12">
+                            <form onSubmit={handleSignUp}>
+                                <h1 className="text-center">Signup Form </h1>
+                                <div className="mb-3">
+                                    <label
+                                        for="exampleInputEmail1"
+                                        className="form-label"
+                                    >
+                                        Email address
+                                    </label>
+                                    <input
+                                        required
+                                        onBlur={handleEmail}
+                                        id="exampleInputEmail1"
+                                        className="form-control"
+                                        name="email"
+                                        placeholder="Email"
+                                        type="email"
+                                    />
+                                    <div id="emailHelp" className="form-text">
+                                        {email.error && (
+                                            <span className="error">
+                                                {email.error}
+                                            </span>
+                                        )}
+                                    </div>
+                                </div>
+                                <div className="mb-3">
+                                    <label
+                                        for="exampleInputPassword1"
+                                        className="form-label"
+                                    >
+                                        Password
+                                    </label>
+                                    <input
+                                        required
+                                        onBlur={handlePassword}
+                                        className="form-control"
+                                        name="password"
+                                        id="password"
+                                        placeholder="password"
+                                        type="password"
+                                    />
+                                    <div id="emailHelp" className="form-text">
+                                        {password.error && (
+                                            <span className="error">
+                                                {password.error}
+                                            </span>
+                                        )}
+                                    </div>
+                                </div>
+                                <div className="mb-3">
+                                    <label
+                                        for="exampleInputPassword1"
+                                        className="form-label"
+                                    >
+                                        Password
+                                    </label>
+                                    <input
+                                        required
+                                        onBlur={handleConfirmPassword}
+                                        className="form-control"
+                                        name="passwordConfirmation"
+                                        id="passwordConfirmation"
+                                        placeholder="passwordConfirmation"
+                                        type="password"
+                                    />
+                                    <div id="emailHelp" className="form-text">
+                                        {passwordConfirmation.error && (
+                                            <span className="error">
+                                                {passwordConfirmation.error}
+                                            </span>
+                                        )}
+                                    </div>
+                                </div>
+                                <input
+                                    type="submit"
+                                    className="btn btn-primary"
+                                    value="Sign Up"
+                                />
+                                <button
+                                    className="btn btn-link"
+                                    onClick={() => navigate("/login")}
+                                >
+                                    Already Registered
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </>
+    );
 }
 
 export default SignUpPage

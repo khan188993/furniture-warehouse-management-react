@@ -22,6 +22,7 @@ const AddProduct = () => {
        const productQuantity = e.target.quantity.value;
        const productSold = 0;
        const productSupplierName = user?.displayName;
+       
        /* 
        
        zodi sob field properly bore taholei product post krobo noyto krbo na,

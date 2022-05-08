@@ -153,6 +153,7 @@ const UpdateProduct = () => {
             <span>Quantity : {quantity || updateProduct?.quantity}</span><br/>
             <span>sold : {sold || updateProduct?.sold}</span><br/>
             <button onClick={()=>delivered(id)}>Delivered</button>
+            <button onClick={()=>navigate('/manage-products')}>Manage Products</button>
             <button className='btn' onClick={()=>navigate('/manage-products')}>Manage Products</button>
             <div className="form w-50 ml-auto">
                 <form action="" onSubmit={handleRestockItems}>

@@ -32,36 +32,45 @@ const SingleProduct = ({product}) => {
     }
 
     return (
+        <>
+        
         <div className="col-lg-4 col-md-6 col-12 my-3">
-            <div className="single-product-manage">
-                <div className="img">{imgUrl}</div>
-                <div className="content">
-                    <h1>Name : {name}</h1>
-                    <h4>Supplier Name : {supplier_name}</h4>
-                    <p>{desc}</p>
-                    <span>{price}$ price</span>
-                    <span>Sold: {sold} </span>
+        <div className="card shadow-sm">
+            {imgUrl}
+        <img className="card-img-top" src="https://htmldemo.net/pander/pander-v3/img/slider/s3.jpg" alt="Card image cap"/>
+            <div className="card-body">
+                <h1 className="card-heading">{name}</h1>
+              <p className="card-text">{desc}</p>
+              <span>Price : {price}$</span>
+                    <span>Sold Items: {sold} </span>
                     <span>Quantity: {quantity}</span>
-                    <br></br>
-                    {
+              <div className="d-flex justify-content-between align-items-center">
+                <div className="btn-group">
+                {
                         (path.includes("manage-products") ||
                         path.includes("my-products") )?(
                             <button
                             onClick={() => handleDeleteProduct(_id)}
-                            className="btn btn-danger"
+                            className="btn btn-sm btn-outline-secondary"
                         >
                             Delete Product
                         </button>
                         ):(
                             <button
-                            className="btn btn-danger"
+                            className="btn btn-sm btn-outline-secondary"
                             onClick={() => navigate(`/inventory/${_id}`)}
                         >
                             Update Product
                         </button>
                         )
                     }
-                    {/* register user can see this button */}
+                </div>
+                <small className="text-muted">{supplier_name}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* register user can see this button */}
                     {/* {user?.displayName != supplier_name ? (
                         <></>
                     ) : path.includes("manage-products") ||
@@ -80,10 +89,12 @@ const SingleProduct = ({product}) => {
                             Update Product
                         </button>
                     )} */}
-                </div>
-            </div>
-        </div>
+        </>
+        
     );
 };
 
 export default SingleProduct;
+
+
+

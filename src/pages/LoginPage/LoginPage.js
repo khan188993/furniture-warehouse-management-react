@@ -87,24 +87,31 @@ const LoginPage = () => {
    
 
     return (
-        <div>
-            <h1>LoginPage</h1>
-            <div className="email-pass-login w-50 mx-auto">
-                <h1>Email Pass Login : </h1>
-                <form action="" onSubmit={handleLogin}>
-                Email new: <input required onBlur={handleEmail} name="email" id="email" placeholder="Email" type="email"/>
-                                                {email.error && (<span className="error">{email.error}</span>)}<br/>
-                password new: <input required onBlur={handlePassword} name="password" id="password" placeholder="password" type="password"/>
-                                                {password.error && (<span className="error">{password.error}</span>)}<br/>
-                    <hr />
-                    <input type="submit" value='Login' />
-                    <button onClick={()=>navigate('/sign-up')}>SignUp</button>
-                </form>
-            </div>
-            <hr />
-            <button onClick={handleResetPass} type="submit" className="my-btn">Forget Password</button>
-            <button onClick={()=>handleGoogleAuth()} className='btn btn-danger'>Login witn google</button>
-        </div>
+        <>
+            <section className="form">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-12">
+                        <form  onSubmit={handleLogin}>
+                        <h1 className='text-center'>Login Form </h1>
+  <div className="mb-3">
+    <label for="exampleInputEmail1" className="form-label">Email address</label>
+    <input required onBlur={handleEmail} id="exampleInputEmail1" className="form-control" name="email" placeholder="Email" type="email"/>
+    <div id="emailHelp" className="form-text">{email.error && (<span className="error">{email.error}</span>)}</div>
+  </div>
+  <div className="mb-3">
+    <label for="exampleInputPassword1" className="form-label">Password</label>
+    <input required onBlur={handlePassword} className="form-control" name="password" id="password" placeholder="password" type="password"/>
+    <div id="emailHelp" className="form-text">{password.error && (<span className="error">{password.error}</span>)}</div>
+  </div>
+  <input type="submit" className="btn btn-primary" value='Login' />
+<button className='btn btn-link' onClick={()=>navigate('/sign-up')}>Create New Account</button>
+</form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+           </>
     )
 }
 

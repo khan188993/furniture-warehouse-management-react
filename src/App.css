@@ -1,7 +1,528 @@
 /* header */
-header {background: antiquewhite;}
+/* header {background: antiquewhite;} */
 
 /* Navbar */
-nav ul {display: flex;list-style: none;justify-content: end;}
+/* nav ul {display: flex;list-style: none;justify-content: end;} */
 
-nav ul li {margin-left: 55px;}
+/* nav ul li {margin-left: 55px;} */
+
+
+/* my style start  */
+/*
+  Theme Name: Name - Arfan Khan Portfolio
+  Author: Md Arfan Khan
+  Support: khan188993@gmail.com
+  Description: Creative  HTML5 template.
+  Version: 1.0
+*/
+
+/* CSS Index
+-----------------------------------
+01. General Styles
+02. Preloader
+03. Navigation
+04. Header/Hero
+05. About
+06. Skills
+07. Why Choose Me
+08. Services
+09. Portfolio
+10. Testimonial
+11. Call to action
+12. Pricing Table
+13. Contact form
+14. Footer
+
+*/
+
+/*! ========= Google Font Add ===========  */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Poppins:ital,wght@0,300;0,400;0,500;0,700;0,800;0,900;1,600&display=swap');
+
+/*! ========= Root CSS Add ===========  */
+:root {
+
+	/* Colors  */
+	--aqua: #01FFFF;
+	--white: #ffffff;
+	--black: #000000;
+	--text-color: #000000;
+	--selection: #e5e5e5;
+
+	/* Font-Family  */
+	--poppins: 'Poppins', sans-serif;
+	--lato: 'Lato', sans-serif;
+	/*========Other Style========*/
+	--transition: all .3s ease;
+}
+
+
+
+/*! ========= TEXT Selection & Placeholder CSS =========== */
+
+
+*::-moz-selection {
+	background: #d6b161;
+	color: #fff;
+	text-shadow: none;
+}
+
+::-moz-selection {
+	background: #444;
+	color: #fff;
+	text-shadow: none;
+}
+
+::selection {
+	background: #444;
+	color: #fff;
+	text-shadow: none;
+}
+
+*::-moz-placeholder {
+	color: #000;
+	font-size: 14px;
+	opacity: 1;
+}
+
+*::placeholder {
+	color: #000;
+	font-size: 14px;
+	opacity: 1;
+}
+
+
+/*! ============Scroll Up Button============*/
+
+.scroll-up-btn {
+	position: fixed;
+	height: 45px;
+	width: 42px;
+	background: var(--aqua);
+	right: 30px;
+	bottom: 10px;
+	text-align: center;
+	line-height: 41px;
+	color: var(--black);
+	z-index: 9999;
+	font-size: 30px;
+	border-radius: 6px;
+	cursor: pointer;
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: var(--transition);
+	transition: var(--transition);
+	border: 3px solid var(--aqua);
+}
+
+.scroll-up-btn.show {
+	bottom: 30px;
+	opacity: 1;
+	visibility: visible;
+}
+
+.scroll-up-btn:hover {
+	background: white;
+	border-color: black;
+}
+
+/*! ========= Preloader CSS ===========  */
+
+#loading {
+	background-color: var(--black);
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	z-index: 99999999;
+	margin-top: 0px;
+	top: 0px;
+}
+
+#loading-center {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+#loading-center-absolute {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	height: 200px;
+	width: 200px;
+	margin-top: -100px;
+	margin-left: -100px;
+}
+
+.object {
+	width: 50px;
+	height: 50px;
+	background-color: rgba(255, 255, 255, 0);
+	margin-right: auto;
+	margin-left: auto;
+	border: 4px solid #FFF;
+	left: 73px;
+	top: 73px;
+	position: absolute;
+}
+
+#first_object {
+	-webkit-animation: first_object_animate 1s infinite ease-in-out;
+	animation: first_object_animate 1s infinite ease-in-out;
+	border-color: var(--aqua);
+}
+
+#second_object {
+	-webkit-animation: second_object 1s forwards, second_object_animate 1s infinite ease-in-out;
+	animation: second_object 1s forwards, second_object_animate 1s infinite ease-in-out;
+	border-color: var(--white);
+}
+
+#third_object {
+	-webkit-animation: third_object 1s forwards, third_object_animate 1s infinite ease-in-out;
+	animation: third_object 1s forwards, third_object_animate 1s infinite ease-in-out;
+	border-color: var(--aqua);
+}
+
+
+
+@-webkit-keyframes second_object {
+	100% {
+		width: 100px;
+		height: 100px;
+		left: 48px;
+		top: 48px;
+	}
+}
+
+@keyframes second_object {
+	100% {
+		width: 100px;
+		height: 100px;
+		left: 48px;
+		top: 48px;
+	}
+}
+
+
+@-webkit-keyframes third_object {
+	100% {
+		width: 150px;
+		height: 150px;
+		left: 23px;
+		top: 23px;
+	}
+}
+
+@keyframes third_object {
+	100% {
+		width: 150px;
+		height: 150px;
+		left: 23px;
+		top: 23px;
+	}
+}
+
+
+
+
+
+
+@-webkit-keyframes first_object_animate {
+	0% {
+		-webkit-transform: perspective(100px);
+	}
+
+	50% {
+		-webkit-transform: perspective(100px) rotateY(-180deg);
+	}
+
+	100% {
+		-webkit-transform: perspective(100px) rotateY(-180deg) rotateX(-180deg);
+	}
+}
+
+@keyframes first_object_animate {
+	0% {
+		transform: perspective(100px) rotateX(0deg) rotateY(0deg);
+		-webkit-transform: perspective(100px) rotateX(0deg) rotateY(0deg);
+	}
+
+	50% {
+		transform: perspective(100px) rotateX(-180deg) rotateY(0deg);
+		-webkit-transform: perspective(100px) rotateX(-180deg) rotateY(0deg);
+	}
+
+	100% {
+		transform: perspective(100px) rotateX(-180deg) rotateY(-180deg);
+		-webkit-transform: perspective(100px) rotateX(-180deg) rotateY(-180deg);
+	}
+}
+
+
+
+@-webkit-keyframes second_object_animate {
+	0% {
+		-webkit-transform: perspective(200px);
+	}
+
+	50% {
+		-webkit-transform: perspective(200px) rotateY(180deg);
+	}
+
+	100% {
+		-webkit-transform: perspective(200px) rotateY(180deg) rotateX(180deg);
+	}
+}
+
+
+@keyframes second_object_animate {
+	0% {
+		transform: perspective(200px) rotateX(0deg) rotateY(0deg);
+		-webkit-transform: perspective(200px) rotateX(0deg) rotateY(0deg);
+	}
+
+	50% {
+		transform: perspective(200px) rotateX(180deg) rotateY(0deg);
+		-webkit-transform: perspective(200px) rotateX(180deg) rotateY(0deg);
+	}
+
+	100% {
+		transform: perspective(200px) rotateX(180deg) rotateY(180deg);
+		-webkit-transform: perspective(200px) rotateX(180deg) rotateY(180deg);
+	}
+}
+
+
+
+
+@-webkit-keyframes third_object_animate {
+	0% {
+		-webkit-transform: perspective(300px);
+	}
+
+	50% {
+		-webkit-transform: perspective(300px) rotateY(-180deg);
+	}
+
+	100% {
+		-webkit-transform: perspective(300px) rotateY(-180deg) rotateX(-180deg);
+	}
+}
+
+@keyframes third_object_animate {
+	0% {
+		transform: perspective(300px) rotateX(0deg) rotateY(0deg);
+		-webkit-transform: perspective(300px) rotateX(0deg) rotateY(0deg);
+	}
+
+	50% {
+		transform: perspective(300px) rotateX(-180deg) rotateY(0deg);
+		-webkit-transform: perspective(300px) rotateX(-180deg) rotateY(0deg);
+	}
+
+	100% {
+		transform: perspective(300px) rotateX(-180deg) rotateY(-180deg);
+		-webkit-transform: perspective(300px) rotateX(-180deg) rotateY(-180deg);
+	}
+}
+
+
+/*! ========= 1) Theme Default CSS ===========  */
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+
+
+body {
+	font-family: var(--poppins);
+	font-size: 16px;
+	color: var(--text-color);
+}
+
+ul {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+p {
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 30px;
+	font-family: var(--Lato);
+	word-spacing: 3px;
+	text-align: justify;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--poppins);
+	font-weight: normal;
+	font-weight: 400;
+}
+
+h1 {
+	font-size: 54px;
+	font-weight: 700;
+}
+
+h2 {
+	font-size: 33px;
+	font-weight: 600;
+}
+
+h3 {
+	font-size: 24px;
+	font-weight: 500;
+}
+
+h4 {
+	font-size: 22px;
+}
+
+h5 {
+	font-size: 18px;
+}
+
+h6 {
+	font-size: 16px;
+}
+
+section {
+	padding: 100px 0;
+	overflow-x: hidden;
+}
+
+
+
+img {
+	width: 100%;
+	height: auto;
+}
+
+
+label {
+	color: #7e7e7e;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+
+a,
+a:active,
+a:hover,
+a:visited,
+a:focus,
+input,
+input:focus,
+textarea,
+textarea:focus,
+button,
+button:focus {
+	text-decoration: none !important;
+	color: var(--black)!important;
+	font-size: 16px;
+	outline: none !important;
+}
+
+/*! ========= Common Button ===========  */
+.mybtn {
+	display: inline-block;
+	border: 3px solid var(--aqua) !important;
+	padding: 9px 20px;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: var(--black) !important;
+	background: var(--aqua);
+	border-radius: 3px;
+	-webkit-transition: var(--transition);
+	transition: var(--transition);
+}
+
+/* .mybtn:hover {
+	background: transparent;
+	color: var(--aqua) !important;
+} */
+
+.mybtn-active {
+	background: #8EC448;
+	color: #fff;
+	border: 1px solid transparent;
+}
+
+
+.mybtn-2 {
+	background: var(--black);
+	color: var(--aqua) !important;
+}
+
+.mybtn-2:hover {
+	background: var(--aqua);
+	color: var(--black) !important;
+}
+
+a {
+	-webkit-transition: all 0.3s ease-out 0s;
+	transition: all 0.3s ease-out 0s;
+	cursor: pointer;
+}
+
+
+
+.delete-margin {
+	margin: -15px 0;
+}
+
+
+.column-margin>div {
+	margin: 15px 0;
+}
+
+/* header */
+header {
+    background: antiquewhite;
+    padding: 30px 0;
+  }
+  .logo {
+    font-size: 25px;
+    font-weight: 800;
+  }
+  .main-menu nav ul {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+  .main-menu nav ul li a,.main-menu nav ul li button {
+    display: inline-block;
+  }
+  .main-menu nav ul li a {
+	font-weight: 600;
+    padding:0 20px;
+}
+.main-menu nav ul li button{
+    margin-left: 20px;
+}
+
+.user-name{
+    font-weight: 800;
+    color:#8EC448;
+}
+
+/* Banner section */
+.banner{
+    background: linear-gradient(#0000002b, #00000070),url(https://htmldemo.net/pander/pander-v3/img/slider/s3.jpg) no-repeat center;
+    background-size:cover ;
+}
+

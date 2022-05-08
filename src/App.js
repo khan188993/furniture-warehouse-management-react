@@ -45,7 +45,6 @@ const App = () => {
   
   return (
     <MyContext.Provider value={{user,products,setProducts,user,myProducts,setMyProducts,quantity,setQuantity,sold,setSold,newAdd,setNewAdd}} >
-      <h1 className='text-center'>React Learning Practice code Running.</h1>
       {/* navigation link making  */}
       <Header/>
       <Toaster />

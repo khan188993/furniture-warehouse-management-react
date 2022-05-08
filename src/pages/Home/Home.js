@@ -23,7 +23,7 @@ const Home = () => {
             <section className='home-products-manage'>
             
                 <div className="container">
-                <SectionTitle secTitle="Inventories" secDesc="Inventories Descriptions"/>
+                <SectionTitle secTitle="Inventories" secDesc=""/>
                     <div className="row">
                         {
                             homeProductLimit?.length > 0 && homeProductLimit.map((product)=><SingleProduct key={product._id} product={product}/>)
