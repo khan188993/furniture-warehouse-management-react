@@ -19,11 +19,12 @@ import BlogPage from './pages/BlogPage/BlogPage';
 import MyContext from './ContextApi/AppContext';
 import useFetchProduct from './hooks/useFetchProduct';
 const App = () => {
+  
   const [myProducts,setMyProducts] = useState([]);
   const [quantity,setQuantity] = useState(0);
   const [sold,setSold] = useState(0);
   const [user] = useAuthState(auth)
-  const {products,setProducts} = useFetchProduct('http://localhost:4000/furniture')
+  const {products,setProducts,newAdd,setNewAdd} = useFetchProduct('http://localhost:4000/furniture')
 
    //FETCHING DATA
     useEffect(() => {
@@ -42,7 +43,7 @@ const App = () => {
 
   
   return (
-    <MyContext.Provider value={{products,setProducts,user,myProducts,setMyProducts,quantity,setQuantity,sold,setSold}} >
+    <MyContext.Provider value={{products,setProducts,user,myProducts,setMyProducts,quantity,setQuantity,sold,setSold,newAdd,setNewAdd}} >
       <h1 className='text-center'>React Learning Practice code Running.</h1>
       {/* navigation link making  */}
       <Header/>

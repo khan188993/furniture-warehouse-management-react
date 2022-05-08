@@ -6,8 +6,8 @@ import auth from '../../Firebase/Firebase.init'
 
 const AddProduct = () => {
     const navigate = useNavigate()
-
-    const {user,products,setProducts} = useAppContext().data;
+    
+    const {user,products,setProducts,newAdd,setNewAdd} = useAppContext().data;
     // const {_id,name,price,desc,imgUrl,supplier_name,quantity,sold} = product;
     /* 
     sold value initial 0, quantity input submit will get 
@@ -47,8 +47,9 @@ const AddProduct = () => {
             })
             .then(res=>res.json())
             .then(data=>{
-                console.log(data);
                 setProducts([...products,newProduct])
+                setNewAdd(newAdd+1);
+                console.log(newAdd);
                 navigate('/manage-products')
             })
         }

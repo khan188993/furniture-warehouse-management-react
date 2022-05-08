@@ -47,28 +47,32 @@ const UpdateProduct = () => {
 
 
     const delivered = (id)=>{
-        const updatedData = {
-            name:updateProduct?.name,
-            desc:updateProduct?.desc,
-            imgUrl:updateProduct?.imgUrl,
-            price:updateProduct?.price,
-            supplier_name:updateProduct?.supplier_name,
-            quantity:(quantity || updateProduct?.quantity) - 1,
-            sold:(sold || updateProduct?.sold) + 1,
+        if(updateProduct.quantity > 0){
+            const updatedData = {
+                name:updateProduct?.name,
+                desc:updateProduct?.desc,
+                imgUrl:updateProduct?.imgUrl,
+                price:updateProduct?.price,
+                supplier_name:updateProduct?.supplier_name,
+                quantity:(quantity || updateProduct?.quantity) - 1,
+                sold:(sold || updateProduct?.sold) + 1,
+            }
+    
+            fetch(`http://localhost:4000/furniture/update/${id}`, {
+                    method: 'PUT',
+                    body: JSON.stringify(updatedData),
+                    headers: {
+                      'Content-type': 'application/json; charset=UTF-8',
+                    },
+                  })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        setQuantity(updatedData.quantity);
+                        setSold(updatedData.sold)
+                    });
+        }else{
+            console.log('Stoke Out Can not delivered');
         }
-
-        fetch(`http://localhost:4000/furniture/update/${id}`, {
-                method: 'PUT',
-                body: JSON.stringify(updatedData),
-                headers: {
-                  'Content-type': 'application/json; charset=UTF-8',
-                },
-              })
-                .then((response) => response.json())
-                .then((data) => {
-                    setQuantity(updatedData.quantity);
-                    setSold(updatedData.sold)
-                });
         
     }
     

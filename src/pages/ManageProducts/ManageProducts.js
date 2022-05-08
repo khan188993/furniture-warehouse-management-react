@@ -18,7 +18,7 @@ const ManageProducts = () => {
             <div className="container">
                 <div className="row">
                     {
-                        products.map((product=><SingleProduct products={products} setProducts={setProducts} key={product._id} product={product}/>))
+                        products.map(((product,index)=><SingleProduct products={products} setProducts={setProducts} key={index} product={product}/>))
                     }
                     <div className="text-center">
                         <button onClick={()=>navigate('/add-new-product')}>Add new Items</button>
