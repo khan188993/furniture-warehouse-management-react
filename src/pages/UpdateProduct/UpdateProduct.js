@@ -47,26 +47,27 @@ const UpdateProduct = () => {
 
 
     const delivered = (id)=>{
-        const updatedQuantityData = {
+        const updatedData = {
             name:updateProduct?.name,
             desc:updateProduct?.desc,
             imgUrl:updateProduct?.imgUrl,
             price:updateProduct?.price,
             supplier_name:updateProduct?.supplier_name,
             quantity:(quantity || updateProduct?.quantity) - 1,
-            sold:updateProduct?.sold,
+            sold:(sold || updateProduct?.sold) + 1,
         }
 
         fetch(`http://localhost:4000/furniture/update/${id}`, {
                 method: 'PUT',
-                body: JSON.stringify(updatedQuantityData),
+                body: JSON.stringify(updatedData),
                 headers: {
                   'Content-type': 'application/json; charset=UTF-8',
                 },
               })
                 .then((response) => response.json())
                 .then((data) => {
-                    setQuantity(updatedQuantityData.quantity);
+                    setQuantity(updatedData.quantity);
+                    setSold(updatedData.sold)
                 });
         
     }
