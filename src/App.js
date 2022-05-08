@@ -18,6 +18,7 @@ import UpdateProduct from './pages/UpdateProduct/UpdateProduct';
 import BlogPage from './pages/BlogPage/BlogPage';
 import MyContext from './ContextApi/AppContext';
 import useFetchProduct from './hooks/useFetchProduct';
+import { Toaster } from 'react-hot-toast';
 const App = () => {
   
   const [myProducts,setMyProducts] = useState([]);
@@ -34,7 +35,7 @@ const App = () => {
                 setMyProducts(data);
                 console.log(data);
             });
-    }, [user?.displayName,myProducts]);
+    }, [user?.displayName]);
 
 
   
@@ -47,6 +48,7 @@ const App = () => {
       <h1 className='text-center'>React Learning Practice code Running.</h1>
       {/* navigation link making  */}
       <Header/>
+      <Toaster />
 
       {/* Routes Defining  */}
       <Routes>
