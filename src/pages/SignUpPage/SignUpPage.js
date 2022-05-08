@@ -201,7 +201,8 @@ const SignUpPage = () => {
                                     onClick={() => navigate("/login")}
                                 >
                                     Already Registered
-                                </button>
+                                </button><br/>
+                                <button onClick={()=>signInWithGoogle()} className='btn btn-danger'>SignUp witn google</button>
                             </form>
                         </div>
                     </div>

@@ -7,6 +7,7 @@ import SectionTitle from '../../components/SectionTitle/SectionTitle'
 import { useNavigate } from 'react-router-dom'
 import useFetchProduct from '../../hooks/useFetchProduct'
 import useAppContext from '../../ContextApi/useAppContext'
+import WhyWe from '../../components/WhyWe/WhyWe'
 
 const Home = () => {
 
@@ -32,6 +33,7 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+            <WhyWe/>
             <Footer/>
             <h1>Extra 2 section</h1>
         </>

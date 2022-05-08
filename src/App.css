@@ -520,9 +520,31 @@ header {
     color:#8EC448;
 }
 
+
 /* Banner section */
 .banner{
     background: linear-gradient(#0000002b, #00000070),url(https://htmldemo.net/pander/pander-v3/img/slider/s3.jpg) no-repeat center;
     background-size:cover ;
 }
 
+/* why we */
+/* ========= Why We Part Start ===========  */
+
+
+.why-we-card-single p {
+    line-height: 33px;
+}
+
+.why-we-card-single img {
+    margin-bottom: 18px;
+}
+
+
+
+#why-we {
+    padding-top: 15px;
+}
+
+.why-we-card-single img {
+    width: 74px;
+}

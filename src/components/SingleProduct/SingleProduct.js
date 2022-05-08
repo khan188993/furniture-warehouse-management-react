@@ -36,8 +36,7 @@ const SingleProduct = ({product}) => {
         
         <div className="col-lg-4 col-md-6 col-12 my-3">
         <div className="card shadow-sm">
-            {imgUrl}
-        <img className="card-img-top" src="https://htmldemo.net/pander/pander-v3/img/slider/s3.jpg" alt="Card image cap"/>
+        <img className="card-img-top" src={imgUrl} alt="Card image cap"/>
             <div className="card-body">
                 <h1 className="card-heading">{name}</h1>
               <p className="card-text">{desc}</p>

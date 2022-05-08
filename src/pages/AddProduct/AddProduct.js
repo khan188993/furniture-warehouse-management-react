@@ -28,12 +28,13 @@ const AddProduct = () => {
        zodi sob field properly bore taholei product post krobo noyto krbo na,
 
        */
-        if(productName && productDesc && productImgUrl && productPrice && Number(productQuantity) && productSupplierName){
+        if(productName && productDesc && productImgUrl && productPrice && Number(productQuantity)){
             const newProduct = {
                 name: productName,
                 desc: productDesc,
                 imgUrl: productImgUrl,
-                supplier_name: productSupplierName,
+                supplier_name: productSupplierName ||  "",
+                user_id:user?.uid,
                 quantity: productQuantity,
                 price: productPrice,
                 sold: productSold,

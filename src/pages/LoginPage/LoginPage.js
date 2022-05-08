@@ -105,7 +105,9 @@ const LoginPage = () => {
     <div id="emailHelp" className="form-text">{password.error && (<span className="error">{password.error}</span>)}</div>
   </div>
   <input type="submit" className="btn btn-primary" value='Login' />
-<button className='btn btn-link' onClick={()=>navigate('/sign-up')}>Create New Account</button>
+<button className='btn btn-link' onClick={()=>navigate('/sign-up')}>Create New Account</button><br/>
+<button onClick={handleResetPass} className="btn badge-info" type="submit">Forget Password</button>
+            <button onClick={()=>handleGoogleAuth()} className='btn btn-danger'>Login witn google</button>
 </form>
                         </div>
                     </div>

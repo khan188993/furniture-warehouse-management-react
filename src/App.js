@@ -20,6 +20,7 @@ import MyContext from './ContextApi/AppContext';
 import useFetchProduct from './hooks/useFetchProduct';
 import { Toaster } from 'react-hot-toast';
 const App = () => {
+  // https://stackoverflow.com/questions/72163434/how-can-i-vertically-center-a-div-element
   
   const [myProducts,setMyProducts] = useState([]);
   const [quantity,setQuantity] = useState(0);
@@ -29,13 +30,16 @@ const App = () => {
 
    //FETCHING DATA
     useEffect(() => {
-        fetch(`http://localhost:4000/furniture?supplier_name=${user?.displayName}`)
+        fetch(`http://localhost:4000/furniture?user_id=${user?.uid}`)
             .then((res) => res.json())
             .then((data) => {
                 setMyProducts(data);
                 console.log(data);
             });
-    }, [user?.displayName,newAdd]);
+    }, [user?.uid,newAdd]);
+    console.log(myProducts);
+    // 0Q6nNEszmygTPpGsOaUgc436VTc2
+    //Fk07804iNFVvYf7M8vvTC0p7dVd2
 
 
   
