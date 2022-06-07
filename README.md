@@ -1,5 +1,6 @@
 <h1>Project Name : Furniture Inventory Management</h1>
     <h3>Project Link : link : <a href="https://furniture-inventory-management.web.app/">Click For Live View</a></h3>
+    <h2>Assignment 11 - web dev programming hero</h2>
     <hr>
     <ol>
         <h2>Project Features:</h2>
